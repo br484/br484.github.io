@@ -24,7 +24,7 @@ sidebar:
 post:
   sticky: Sticky
   posted: Postado em
-  modified: Updated at
+  modified: Modificado em
   in: Em
   read_more: Leia mais
   untitled: Sem título
@@ -70,7 +70,7 @@ state:
   categories: Categorias
 
 cheers:
-  um: Uhmmmm...
+  um: Uai...
   ok: OK
   nice: Bom
   good: Muito Bom
