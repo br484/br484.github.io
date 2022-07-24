@@ -5,7 +5,7 @@
 
 # Site
 title: br484
-subtitle:
+subtitle: A simple infosec blog
 description:
 author: br484
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
@@ -213,7 +213,8 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
+social:
+  Github: https://github.com/br484
   #LinkLabel: Link
 
 
@@ -255,7 +256,7 @@ toc:
 
 sidebar:
   # Sidebar Position, available value: left | right
-  position: left
+  position: right
   #position: right
 
   # Sidebar Display, available value:
