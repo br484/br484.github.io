@@ -1,9 +1,8 @@
 ---
 title: Primeiro post - Tools
-date: 2013-12-24 23:29:53
+date: 2022-07-24 23:29:53
 categories:
-- recon
-- Bug Bounty
+- Tools
 tags:
 - Bug Bounty
 - recon
