@@ -13,8 +13,10 @@ tags:
 - Hosts
 ---
 
+Tools:
 
  ## Osint
+
 - Domain information ([whois](https://github.com/rfc1036/whois) and [amass](https://github.com/OWASP/Amass))
 - Emails addresses and users ([theHarvester](https://github.com/laramies/theHarvester) and [emailfinder](https://github.com/Josue87/EmailFinder))
 - Password leaks ([pwndb](https://github.com/davidtavarez/pwndb) and [H8mail](https://github.com/khast3x/h8mail))
@@ -23,6 +25,7 @@ tags:
 - Github Dorks ([gitdorks_go](https://github.com/damit5/gitdorks_go))
 
 ## Subdomains
+
   - Passive ([amass](https://github.com/OWASP/Amass) and [github-subdomains](https://github.com/gwen001/github-subdomains))
   - Certificate transparency ([ctfr](https://github.com/UnaPibaGeek/ctfr))
   - Bruteforce ([puredns](https://github.com/d3mondev/puredns))
@@ -38,6 +41,7 @@ tags:
   - Cloud checkers ([S3Scanner](https://github.com/sa7mon/S3Scanner) and [cloud_enum](https://github.com/initstring/cloud_enum))
 
 ## Hosts
+
 - IP info ([whoisxmlapi API](https://www.whoisxmlapi.com/))
 - CDN checker ([ipcdn](https://github.com/six2dez/ipcdn))
 - WAF checker ([wafw00f](https://github.com/EnableSecurity/wafw00f))
@@ -46,6 +50,7 @@ tags:
 - Password spraying ([brutespray](https://github.com/x90skysn3k/brutespray))
 
 ## Webs
+
 - Web Prober ([httpx](https://github.com/projectdiscovery/httpx) and [unimap](https://github.com/Edu4rdSHL/unimap))
 - Web screenshot ([webscreenshot](https://github.com/maaaaz/webscreenshot) or [gowitness](https://github.com/sensepost/gowitness))
 - Web templates scanner ([nuclei](https://github.com/projectdiscovery/nuclei) and [nuclei geeknik](https://github.com/geeknik/the-nuclei-templates.git))

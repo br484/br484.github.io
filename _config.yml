@@ -4,13 +4,13 @@
 # ---------------------------------------------------------------
 
 # Site
-title: br484
+title: 0xbr484
 subtitle: Infosec journey with br484...
 description:
-author: br484
+author: 0xbr484@tuta.io
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: pt-BR
-date_format: '%Y-%m-%d'
+date_format: '%d-%m-%Y'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
