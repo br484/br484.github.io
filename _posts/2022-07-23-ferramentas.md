@@ -5,11 +5,15 @@ categories:
 - Tools
 tags:
 - Bug Bounty
-- recon
+- Recon
 - Osint
 - Subdomains
 - Web
 - Hosts
+---
+
+Ferramentas de recon
+
 ---
 
 Tools:
