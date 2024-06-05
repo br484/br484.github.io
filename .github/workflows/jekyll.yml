@@ -3,8 +3,7 @@ name: Jekyll site CI
 on:
   push:
     branches:
-      - main # ou o branch que você está usando
-
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
