@@ -1,8 +1,5 @@
 ---
 title: CVE - IPC Unigy - ingles
-updated: 2024-10-19 00:24:16Z
-created: 2024-06-05 03:30:57Z
-altitude: 0.0000
 ---
 
 ### Vulnerability Report: SSRF in IPC Unigy™ Management System
