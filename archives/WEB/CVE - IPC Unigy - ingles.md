@@ -2,8 +2,6 @@
 title: CVE - IPC Unigy - ingles
 updated: 2024-10-19 00:24:16Z
 created: 2024-06-05 03:30:57Z
-latitude: -15.79422870
-longitude: -47.88216580
 altitude: 0.0000
 ---
 
