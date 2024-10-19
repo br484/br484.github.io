@@ -1,5 +1,5 @@
 ---
-title: CVE - IPC Unigy - ingles
+title: CVE - IPC Unigy
 ---
 
 ### Vulnerability Report: SSRF in IPC Unigy™ Management System
