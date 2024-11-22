@@ -1,5 +1,5 @@
 ---
-title: CVE - IPC Unigy
+title: CVE-2024-11618
 ---
 
 ### Vulnerability Report: SSRF in IPC Unigy™ Management System
