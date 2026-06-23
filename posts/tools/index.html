@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e0a">
+
+  
+  <title>Recon Tools :: 0xbr484</title>
+
+  <link rel="icon" href="/assets/images/icon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Recon Tools | 0xbr484</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Recon Tools" />
+<meta name="author" content="br484" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Recon tooling. Tools: ## Osint Domain information (whois and amass) Emails addresses and users (theHarvester and emailfinder) Password leaks (pwndb and H8mail) Metadata finder (MetaFinder) Google Dorks (degoogle_hunter) Github Dorks (gitdorks_go) Subdomains Passive (amass and github-subdomains) Certificate transparency (ctfr) Bruteforce (puredns) Permutations (Gotator) JS files &amp; Source Code Scraping (gospider) DNS Records (dnsx) Google Analytics ID (AnalyticsRelationships) TLS handshake (tlsx) Recursive search. Subdomains takeover (nuclei) DNS takeover (dnstake) DNS Zone Transfer (dig) Cloud checkers (S3Scanner and cloud_enum) Hosts IP info (whoisxmlapi API) CDN checker (ipcdn) WAF checker (wafw00f) Port Scanner (Active with nmap and passive with smap) Port services vulnerability…" />
+<meta name="twitter:description" property="og:description" content="Recon tooling. Tools: ## Osint Domain information (whois and amass) Emails addresses and users (theHarvester and emailfinder) Password leaks (pwndb and H8mail) Metadata finder (MetaFinder) Google Dorks (degoogle_hunter) Github Dorks (gitdorks_go) Subdomains Passive (amass and github-subdomains) Certificate transparency (ctfr) Bruteforce (puredns) Permutations (Gotator) JS files &amp; Source Code Scraping (gospider) DNS Records (dnsx) Google Analytics ID (AnalyticsRelationships) TLS handshake (tlsx) Recursive search. Subdomains takeover (nuclei) DNS takeover (dnstake) DNS Zone Transfer (dig) Cloud checkers (S3Scanner and cloud_enum) Hosts IP info (whoisxmlapi API) CDN checker (ipcdn) WAF checker (wafw00f) Port Scanner (Active with nmap and passive with smap) Port services vulnerability…" />
+<link rel="canonical" href="https://br484.github.io/posts/tools/" />
+<meta property="og:url" content="https://br484.github.io/posts/tools/" />
+<meta property="og:site_name" content="0xbr484" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-24T20:29:53-03:00" />
+<meta property="article:modified_time" content="2022-07-24T20:29:53-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Recon Tools" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"br484"},"dateModified":"2022-07-24T20:29:53-03:00","datePublished":"2022-07-24T20:29:53-03:00","description":"Recon tooling. Tools: ## Osint Domain information (whois and amass) Emails addresses and users (theHarvester and emailfinder) Password leaks (pwndb and H8mail) Metadata finder (MetaFinder) Google Dorks (degoogle_hunter) Github Dorks (gitdorks_go) Subdomains Passive (amass and github-subdomains) Certificate transparency (ctfr) Bruteforce (puredns) Permutations (Gotator) JS files &amp; Source Code Scraping (gospider) DNS Records (dnsx) Google Analytics ID (AnalyticsRelationships) TLS handshake (tlsx) Recursive search. Subdomains takeover (nuclei) DNS takeover (dnstake) DNS Zone Transfer (dig) Cloud checkers (S3Scanner and cloud_enum) Hosts IP info (whoisxmlapi API) CDN checker (ipcdn) WAF checker (wafw00f) Port Scanner (Active with nmap and passive with smap) Port services vulnerability…","headline":"Recon Tools","mainEntityOfPage":{"@type":"WebPage","@id":"https://br484.github.io/posts/tools/"},"url":"https://br484.github.io/posts/tools/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="crt">
+
+    <header class="term-bar">
+  <div class="term-bar__chrome">
+    <span class="dot dot--red"></span>
+    <span class="dot dot--amber"></span>
+    <span class="dot dot--green"></span>
+  </div>
+  <a class="term-bar__title" href="/">
+    br484@localhost<span class="muted">:~$</span>
+  </a>
+  <nav class="term-nav" aria-label="Main navigation">
+    
+      
+      
+      <a class="term-nav__link " href="/">
+        <span class="term-nav__icon">~</span>home
+      </a>
+    
+      
+      
+      <a class="term-nav__link " href="/posts/">
+        <span class="term-nav__icon">$</span>posts
+      </a>
+    
+  </nav>
+</header>
+
+
+    <main class="content">
+      <article class="post">
+  <header class="post__header">
+    <div class="post__breadcrumb">
+      <span class="prompt">$</span> cat
+      <a href="/posts/">posts</a>/<span class="post__file">recon-tools.md</span>
+    </div>
+    <h1 class="post__title">Recon Tools</h1>
+    <div class="post__meta">
+      <time datetime="2022-07-24T20:29:53-03:00">2022-07-24</time>
+      
+        <span class="post__meta-sep">·</span>
+        <span class="post__cats">
+          <span class="cat">Tools</span>
+        </span>
+      
+      <span class="post__meta-sep">·</span>
+      <span class="post__readtime">2 min</span>
+    </div>
+    
+    <div class="archive-notice">// archived — old content, may be outdated</div>
+    
+  </header>
+
+  <div class="post__body">
+    <p>Recon tooling.</p>
+
+<hr />
+
+<p>Tools:</p>
+
+<p>## Osint</p>
+
+<ul>
+  <li>Domain information (<a href="https://github.com/rfc1036/whois">whois</a> and <a href="https://github.com/OWASP/Amass">amass</a>)</li>
+  <li>Emails addresses and users (<a href="https://github.com/laramies/theHarvester">theHarvester</a> and <a href="https://github.com/Josue87/EmailFinder">emailfinder</a>)</li>
+  <li>Password leaks (<a href="https://github.com/davidtavarez/pwndb">pwndb</a> and <a href="https://github.com/khast3x/h8mail">H8mail</a>)</li>
+  <li>Metadata finder (<a href="https://github.com/Josue87/MetaFinder">MetaFinder</a>)</li>
+  <li>Google Dorks (<a href="https://github.com/six2dez/degoogle_hunter">degoogle_hunter</a>)</li>
+  <li>Github Dorks (<a href="https://github.com/damit5/gitdorks_go">gitdorks_go</a>)</li>
+</ul>
+
+<h2 id="subdomains">Subdomains</h2>
+
+<ul>
+  <li>Passive (<a href="https://github.com/OWASP/Amass">amass</a> and <a href="https://github.com/gwen001/github-subdomains">github-subdomains</a>)</li>
+  <li>Certificate transparency (<a href="https://github.com/UnaPibaGeek/ctfr">ctfr</a>)</li>
+  <li>Bruteforce (<a href="https://github.com/d3mondev/puredns">puredns</a>)</li>
+  <li>Permutations (<a href="https://github.com/Josue87/gotator">Gotator</a>)</li>
+  <li>JS files &amp; Source Code Scraping (<a href="https://github.com/jaeles-project/gospider">gospider</a>)</li>
+  <li>DNS Records (<a href="https://github.com/projectdiscovery/dnsx">dnsx</a>)</li>
+  <li>Google Analytics ID (<a href="https://github.com/Josue87/AnalyticsRelationships">AnalyticsRelationships</a>)</li>
+  <li>TLS handshake (<a href="https://github.com/projectdiscovery/tlsx">tlsx</a>)</li>
+  <li>Recursive search.</li>
+  <li>Subdomains takeover (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a>)</li>
+  <li>DNS takeover (<a href="https://github.com/pwnesia/dnstake">dnstake</a>)</li>
+  <li>DNS Zone Transfer (<a href="https://linux.die.net/man/1/dig">dig</a>)</li>
+  <li>Cloud checkers (<a href="https://github.com/sa7mon/S3Scanner">S3Scanner</a> and <a href="https://github.com/initstring/cloud_enum">cloud_enum</a>)</li>
+</ul>
+
+<h2 id="hosts">Hosts</h2>
+
+<ul>
+  <li>IP info (<a href="https://www.whoisxmlapi.com/">whoisxmlapi API</a>)</li>
+  <li>CDN checker (<a href="https://github.com/six2dez/ipcdn">ipcdn</a>)</li>
+  <li>WAF checker (<a href="https://github.com/EnableSecurity/wafw00f">wafw00f</a>)</li>
+  <li>Port Scanner (Active with <a href="https://github.com/nmap/nmap">nmap</a> and passive with <a href="https://github.com/s0md3v/Smap">smap</a>)</li>
+  <li>Port services vulnerability checks (<a href="https://github.com/offensive-security/exploitdb">searchsploit</a>)</li>
+  <li>Password spraying (<a href="https://github.com/x90skysn3k/brutespray">brutespray</a>)</li>
+</ul>
+
+<h2 id="webs">Webs</h2>
+
+<ul>
+  <li>Web Prober (<a href="https://github.com/projectdiscovery/httpx">httpx</a> and <a href="https://github.com/Edu4rdSHL/unimap">unimap</a>)</li>
+  <li>Web screenshot (<a href="https://github.com/maaaaz/webscreenshot">webscreenshot</a> or <a href="https://github.com/sensepost/gowitness">gowitness</a>)</li>
+  <li>Web templates scanner (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a> and <a href="https://github.com/geeknik/the-nuclei-templates.git">nuclei geeknik</a>)</li>
+  <li>Url extraction (<a href="https://github.com/tomnomnom/waybackurls">waybackurls</a>, <a href="https://github.com/lc/gau">gau</a>, <a href="https://github.com/jaeles-project/gospider">gospider</a>, <a href="https://gist.github.com/six2dez/d1d516b606557526e9a78d7dd49cacd3">github-endpoints</a> and <a href="https://github.com/w9w/JSA">JSA</a>)</li>
+  <li>URLPatterns Search (<a href="https://github.com/tomnomnom/gf">gf</a> and <a href="https://github.com/1ndianl33t/Gf-Patterns">gf-patterns</a>)</li>
+  <li>XSS (<a href="https://github.com/hahwul/dalfox">dalfox</a>)</li>
+  <li>Open redirect (<a href="https://github.com/r0075h3ll/Oralyzer">Oralyzer</a>)</li>
+  <li>SSRF (headers <a href="https://github.com/projectdiscovery/interactsh">interactsh</a> and param values with <a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+  <li>CRLF (<a href="https://github.com/dwisiswant0/crlfuzz">crlfuzz</a>)</li>
+  <li>Favicon Real IP (<a href="https://github.com/pielco11/fav-up">fav-up</a>)</li>
+  <li>Javascript analysis (<a href="https://github.com/lc/subjs">subjs</a>, <a href="https://github.com/w9w/JSA">JSA</a>, <a href="https://github.com/xnl-h4ck3r/xnLinkFinder">xnLinkFinder</a>, <a href="https://github.com/m4ll0k/BBTz">getjswords</a>)</li>
+  <li>Fuzzing (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+  <li>Cors (<a href="https://github.com/s0md3v/Corsy">Corsy</a>)</li>
+  <li>LFI Checks (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+  <li>SQLi Check (<a href="https://github.com/sqlmapproject/sqlmap">SQLMap</a>)</li>
+  <li>SSTI (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+  <li>CMS Scanner (<a href="https://github.com/Tuhinshubhra/CMSeeK">CMSeeK</a>)</li>
+  <li>SSL tests (<a href="https://github.com/drwetter/testssl.sh">testssl</a>)</li>
+  <li>Broken Links Checker (<a href="https://github.com/jaeles-project/gospider">gospider</a>)</li>
+  <li>Prototype Pollution (<a href="https://github.com/dwisiswant0/ppfuzz">ppfuzz</a>)</li>
+  <li>URL sorting by extension</li>
+  <li>Wordlist generation</li>
+  <li>Passwords dictionary creation (<a href="https://github.com/LandGrey/pydictor">pydictor</a>)</li>
+</ul>
+
+  </div>
+
+  <footer class="post__footer">
+    <a class="back-link" href="/posts/"><span class="prompt">$</span> cd ..</a>
+  </footer>
+</article>
+
+    </main>
+
+    <footer class="term-footer">
+  <span class="term-footer__prompt">br484@localhost<span class="muted">:~$</span></span>
+  <span class="term-footer__cmd">echo</span>
+  <span class="term-footer__out">"&copy; 2026 br484 — powered by energy drinks &amp; sleepless nights"</span>
+  <span class="term-footer__links">
+    <a class="social" href="https://github.com/br484" rel="me noopener" target="_blank" aria-label="GitHub">
+      <svg class="social__icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>github</span>
+    </a>
+    <a class="social" href="https://t.me/br484" rel="me noopener" target="_blank" aria-label="Telegram">
+      <svg class="social__icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.07-3.01-1.96 1.9c-.21.21-.39.39-.78.39z"/></svg>
+      <span>telegram</span>
+    </a>
+  </span>
+  <span class="cursor" aria-hidden="true">&#9608;</span>
+</footer>
+
+
+  </div>
+</body>
+</html>
