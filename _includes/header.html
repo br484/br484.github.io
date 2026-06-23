@@ -1,0 +1,19 @@
+<header class="term-bar">
+  <div class="term-bar__chrome">
+    <span class="dot dot--red"></span>
+    <span class="dot dot--amber"></span>
+    <span class="dot dot--green"></span>
+  </div>
+  <a class="term-bar__title" href="{{ '/' | relative_url }}">
+    {{ site.author }}@{{ site.shell_host }}<span class="muted">:~$</span>
+  </a>
+  <nav class="term-nav" aria-label="Main navigation">
+    {% for item in site.nav %}
+      {% assign item_url = item.url | relative_url %}
+      {% if page.url == item.url %}{% assign active = "is-active" %}{% else %}{% assign active = "" %}{% endif %}
+      <a class="term-nav__link {{ active }}" href="{{ item_url }}">
+        <span class="term-nav__icon">{{ item.icon }}</span>{{ item.name }}
+      </a>
+    {% endfor %}
+  </nav>
+</header>

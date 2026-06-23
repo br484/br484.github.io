@@ -1,0 +1,17 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="{{ site.theme_color | default: '#0a0e0a' }}">
+
+  {% if page.title %}
+    {% assign page_title = page.title | append: " :: " | append: site.title %}
+  {% else %}
+    {% assign page_title = site.title | append: " — " | append: site.tagline %}
+  {% endif %}
+  <title>{{ page_title }}</title>
+
+  <link rel="icon" href="{{ '/assets/images/icon.ico' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  {% seo %}
+</head>

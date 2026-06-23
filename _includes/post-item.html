@@ -1,0 +1,9 @@
+{%- comment -%} Renders one post row. Usage: {% include post-item.html post=post %} {%- endcomment -%}
+<li class="post-item{% if include.post.archived %} post-item--archived{% endif %}">
+  <a class="post-item__link" href="{{ include.post.url | relative_url }}">
+    <time class="post-item__date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y-%m-%d" }}</time>
+    <span class="post-item__sep">»</span>
+    <span class="post-item__title">{{ include.post.title }}</span>
+    {% if include.post.archived %}<span class="badge badge--archived">archived</span>{% endif %}
+  </a>
+</li>

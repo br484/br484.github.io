@@ -9,3 +9,8 @@ Thumbs.db
 .rbenv-version
 .rvmrc
 /vendor
+.jekyll-cache/
+.jekyll-metadata
+
+# local preview helpers (machine-specific paths)
+.claude/

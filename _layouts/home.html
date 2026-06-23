@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="hero__prompt">
+    <span class="prompt">$</span> whoami
+  </div>
+  <h1 class="hero__name">{{ site.author }} <span class="muted">// 0xbr484</span></h1>
+  <p class="hero__tagline">{{ site.tagline }}</p>
+
+  <div class="hero__prompt">
+    <span class="prompt">$</span> cat ./about.txt
+  </div>
+  <p class="hero__bio">{{ site.description }}</p>
+
+  <div class="hero__meta">
+    <a class="chip" href="https://github.com/{{ site.github_user }}" target="_blank" rel="noopener">[ github ]</a>
+    <a class="chip" href="https://t.me/{{ site.telegram }}" target="_blank" rel="noopener">[ telegram ]</a>
+  </div>
+</section>
+
+<section class="listing">
+  {% assign active_posts = site.posts | where_exp: "p", "p.archived != true" %}
+  {% assign archived_posts = site.posts | where_exp: "p", "p.archived == true" %}
+
+  <div class="listing__head">
+    <span class="prompt">$</span> ls -la ./posts <span class="muted">| sort -r</span>
+  </div>
+  <ul class="post-list">
+    {% for post in active_posts %}{% include post-item.html post=post %}{% endfor %}
+  </ul>
+
+  {% if archived_posts.size > 0 %}
+  <div class="listing__head listing__head--archive">
+    <span class="prompt">$</span> ls ./archive <span class="muted"># old posts, may be outdated</span>
+  </div>
+  <ul class="post-list post-list--archive">
+    {% for post in archived_posts %}{% include post-item.html post=post %}{% endfor %}
+  </ul>
+  {% endif %}
+</section>
