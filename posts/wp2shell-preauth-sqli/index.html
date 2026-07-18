@@ -81,7 +81,7 @@
         </span>
       
       <span class="post__meta-sep">·</span>
-      <span class="post__readtime">10 min</span>
+      <span class="post__readtime">11 min</span>
     </div>
     
   </header>
@@ -114,7 +114,7 @@
     <tr>
       <td><strong>Remote code execution</strong> — object injection → shell</td>
       <td>none</td>
-      <td><strong>No</strong> on pure stock; <strong>yes</strong> when the site has two common plugin patterns</td>
+      <td><strong>Not by any path we found</strong> on pure stock; <strong>yes</strong> with two common plugin patterns</td>
       <td>Critical (conditional)</td>
     </tr>
   </tbody>
@@ -237,7 +237,9 @@
   <li>No unauthenticated endpoint stores an attacker string into meta/options that <code class="language-plaintext highlighter-rouge">maybe_unserialize</code> would later revive (the second-order object-injection pattern needs a plugin write).</li>
 </ul>
 
-<p><strong>Conclusion:</strong> on a bare stock <code class="language-plaintext highlighter-rouge">7.0.1</code> with a supported PHP, the pre-auth SQLi <strong>cannot</strong> be escalated to RCE by any source-derivable path. A <em>proven negative</em>, not a gap we skipped. It also implies the “no plugins” RCE narrative most plausibly describes the <strong>SQLi delivery</strong> (genuinely no-plugins) unless a primitive outside the source-derivable surface is being held back.</p>
+<p><strong>Conclusion — bounded, and honest about it.</strong> On a bare stock <code class="language-plaintext highlighter-rouge">7.0.1</code> with a supported PHP, we could not escalate the pre-auth SQLi to RCE by <strong>any path derivable from the public source</strong>. That’s the scope: a <em>bounded</em> proven-negative, not a claim that stock RCE is impossible. Our demonstrated RCE is application-layer and, like the original researchers’, needs <strong>no</strong> poorly configured MySQL — no <code class="language-plaintext highlighter-rouge">FILE</code> privilege, no <code class="language-plaintext highlighter-rouge">INTO OUTFILE</code>, no stacked queries — but it does need the two plugin preconditions above.</p>
+
+<p>The original researchers (Searchlight / <a href="https://twitter.com/infosec_au">@infosec_au</a>) have stated their RCE payload requires <strong>no</strong> MySQL misconfiguration and are withholding it pending proof of exploitation. That points to a more general primitive — outside what we could derive from source — that <strong>we did not find</strong>. So read the <em>conditional</em> framing as <strong>our ceiling, not the vulnerability’s</strong>: we couldn’t get there on stock, which doesn’t mean nobody can. We’re not claiming to own the whole truth here.</p>
 
 <p>The enablers that <em>do</em> open RCE — all common on real sites, none default:</p>
 
