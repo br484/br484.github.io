@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "sabor2shell — WordPress core pre-auth SQLi, RCE-flavored (CVE-2026-63030 + CVE-2026-60137)"
+title: "wp2shell — WordPress core pre-auth SQLi, shell-flavored (CVE-2026-63030 + CVE-2026-60137)"
 date: 2026-07-18 14:00:00
 categories: research
 ---
 
-Two patched WordPress core bugs chain into an **unauthenticated SQL injection**. Shell is on the table too — but conditional, hence *sabor2shell*: a SQLi with a **taste** of RCE, not a guaranteed one. No plugin bug for the SQLi, no credentials for either. Reconstructed from the public patch, validated in a lab.
+Two patched WordPress core bugs chain into an **unauthenticated SQL injection**. Shell is on the table too — but conditional: a SQLi with a **taste** of shell, not a guaranteed one. No plugin bug for the SQLi, no credentials for either. Reconstructed from the public patch, validated in a lab.
 
 **Affected:** `6.9.0–6.9.4` / `7.0.0–7.0.1`. **Fixed:** `6.9.5` / `7.0.2` / `6.8.6`.
 
@@ -33,7 +33,7 @@ POST /wp-json/batch/v1  (validation:normal)
 ## Impact
 
 - **SQLi — universal.** Any unpatched target in range, zero plugins. Unauth dump of `wp_users` (login + `$wp$` bcrypt hash), `wp_options`, any table. The oracle is a boolean (`OR 1=1` → all posts, `OR 1=2` → fewer), so it's jitter-immune.
-- **RCE — the *sabor*.** Unauth, but conditional on two patterns that are common on real sites yet not default: (1) a plugin/theme that drops REST pagination (`nopaging`) → forces `split_the_query=false` → a `UNION` returns a fully attacker-controlled row → rendered `post_content`; (2) a shortcode that unserializes attacker input next to a POP gadget. On a bare stock install it **doesn't** reach RCE — every core gadget is `__wakeup`-guarded and `split=false` can't be forced pre-auth. So: always a critical SQLi, sometimes a shell.
+- **RCE — the flavor.** Unauth, but conditional on two patterns that are common on real sites yet not default: (1) a plugin/theme that drops REST pagination (`nopaging`) → forces `split_the_query=false` → a `UNION` returns a fully attacker-controlled row → rendered `post_content`; (2) a shortcode that unserializes attacker input next to a POP gadget. On a bare stock install it **doesn't** reach RCE — every core gadget is `__wakeup`-guarded and `split=false` can't be forced pre-auth. So: always a critical SQLi, sometimes a shell.
 
 ## Tooling
 
