@@ -16,7 +16,7 @@ Two patched WordPress core bugs chain into an **unauthenticated SQL injection**.
 | Capability | Auth | Works on a stock install (no plugins)? | Severity |
 |---|---|---|---|
 | **Blind SQL injection** — dump `wp_users` (login + hash), `wp_options`, any table | none | **Yes — always, universal** | Critical |
-| **Remote code execution** — object injection → shell | none | **No** on pure stock; **yes** when the site has two common plugin patterns | Critical (conditional) |
+| **Remote code execution** — object injection → shell | none | **Not by any path we found** on pure stock; **yes** with two common plugin patterns | Critical (conditional) |
 
 The SQLi is universal — any unpatched target in the version range, zero plugins. The RCE is conditional — it fires on real sites that meet two preconditions (below), common but not default. On a bare stock install we proved the RCE does *not* close, and exactly why.
 
@@ -134,7 +134,9 @@ No public writeup has this part. On stock `7.0.1` the RCE reduces to a **deliver
 - The SQLi is **read-only** (no stacked queries; `SQL_CALC_FOUND_ROWS` breaks `UNION` whenever a LIMIT exists) and the DB user has no `FILE` privilege → can't write a webshell, read `wp-config` salts, or plant serialized bytes.
 - No unauthenticated endpoint stores an attacker string into meta/options that `maybe_unserialize` would later revive (the second-order object-injection pattern needs a plugin write).
 
-**Conclusion:** on a bare stock `7.0.1` with a supported PHP, the pre-auth SQLi **cannot** be escalated to RCE by any source-derivable path. A *proven negative*, not a gap we skipped. It also implies the "no plugins" RCE narrative most plausibly describes the **SQLi delivery** (genuinely no-plugins) unless a primitive outside the source-derivable surface is being held back.
+**Conclusion — bounded, and honest about it.** On a bare stock `7.0.1` with a supported PHP, we could not escalate the pre-auth SQLi to RCE by **any path derivable from the public source**. That's the scope: a *bounded* proven-negative, not a claim that stock RCE is impossible. Our demonstrated RCE is application-layer and, like the original researchers', needs **no** poorly configured MySQL — no `FILE` privilege, no `INTO OUTFILE`, no stacked queries — but it does need the two plugin preconditions above.
+
+The original researchers (Searchlight / [@infosec_au](https://twitter.com/infosec_au)) have stated their RCE payload requires **no** MySQL misconfiguration and are withholding it pending proof of exploitation. That points to a more general primitive — outside what we could derive from source — that **we did not find**. So read the *conditional* framing as **our ceiling, not the vulnerability's**: we couldn't get there on stock, which doesn't mean nobody can. We're not claiming to own the whole truth here.
 
 The enablers that *do* open RCE — all common on real sites, none default:
 
